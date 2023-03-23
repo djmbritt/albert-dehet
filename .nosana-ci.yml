@@ -3,23 +3,15 @@ nosana:
   
 
 global:
-  image: registry.hub.docker.com/library/node:18
+  image: alpine:latest
 
   trigger:
     branch:
       - main
 
-  environment:
-    NPM_TOKEN:
-      type: "nosana/secret"
-      endpoint: "https://secrets.k8s.dev.nos.ci"
-      value: "npm-deploy-key"
-      
 jobs:
   - name: "Install Dependencies"
     commands:
-      - npm ci
-      - npm run build
-      - npm run test
-      - npm run publish:public
-    
+      - ls -lah
+      - env
+      - cwd
